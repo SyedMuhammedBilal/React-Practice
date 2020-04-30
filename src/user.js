@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 
 
-import UserGreeting from './components/usergreeting.component'
+import Message from './components/message.component'
 
 export class user extends Component {
     
     render() {
         return (
             <div>
-                <UserGreeting />
+                <Message />
             </div>
         )
     }

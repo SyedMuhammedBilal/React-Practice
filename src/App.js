@@ -1,55 +1,44 @@
 import React from 'react';
 import { BrowserRouter as Router,
-Switch, 
-Route, } from 'react-router-dom'
+Switch, Link } from 'react-router-dom'
+import Route from 'react-router-dom/Route';
 
 import './App.css';
-import Greet from './components/greet.component'
-import Welcome from './components/welcome.component'
-import Message from './components/message.component'
-import Counter from './components/counter.component'
-import FuncClick from './components/funcClick.component'
-import ClassClick from './components/ClassClick.component'
-import EventBind from './components/EventBind.component'
-import Parent from './components/parent.component'
-import UserGreeting from './components/usergreeting.component'
-import NameList from './components/NameList.component'
-import StyleSheet from './components/StyleSheet'
-import Inline from './components/Inline'
-import Form from './components/form'
-import user from './user'
+import Users from './user'
+
+const User = ({match}) => {
+  return( <h1>Hello {match.params.username}!</h1> )
+}
 
 function App() {
   return (
-    
-      <div className="App">
-      <Form />
-      {/*<StyleSheet primary={true}/>
-      <Inline />*/}
-        {/*<NameList />*/}
-        {/*<Router>
-          <Switch>
-            <Route path='/user' exact component={user} />
-          </Switch>
-        </Router>*/}
-        
-    {/*<Link to={'/user'}>user</Link>*/}
-    {/*<UserGreeting />*/}
-    {/*<Parent />*/}
-    {/*<EventBind />*/}
-    {/*<FuncClick />
-    <ClassClick />*/}
-    {/*<Counter />*/}
-    {/* props practice */}
-      {/*<Greet name='Bilal' skills='programmer' >
-        <p>this is childern props</p>
-      </Greet>
-      <Greet name='Mani' skills='programmer' />
-      <Greet name='Wasiq' skills='buissness' />
-      <Welcome name='Bilal' skills='programmer' />
-      <Message />*/}
+    <Router>
+      <div className='App'>
+      <ul>
+        <li>
+          <Link to="/" >Home</Link>
+        </li>
+        <li>
+          <Link to="/about/" >About</Link>
+        </li>
+        <li>
+          <Link to="/user/bilal" >bilal</Link>
+        </li>
+      </ul>
+
+      <Route path="/" exact strict render= {
+        () => {
+          return( <h1>Hello React</h1> )
+        }
+      } />
+      <Route path="/about/" exact strict render={
+        () => {
+          return( <Users /> )
+        }
+      } />
+      <Route  path="/user/:username" exact strict component={User} />
       </div>
-   
+    </Router>
   );
 }
 
